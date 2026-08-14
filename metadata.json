@@ -1,0 +1,6 @@
+{
+  "name": "The Namastark ROAS Forecaster",
+  "description": "An academic and high-performance paid media forecasting model and calculator implementing the Namastark Constant (N0 = 0.6624) and dynamic coefficient by Saul Miron Stark.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
