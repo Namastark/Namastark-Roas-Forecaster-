@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ForecasterInputs, ForecasterResults, ContactFormData, TargetMarketRole, MonthlySpendTier, InquiryObjective } from '../types';
 import { CURRENCIES } from '../data/constants';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   Mail, 
   Send, 
@@ -249,14 +250,15 @@ Framework: The Namastark Model: A New Standard for Smarter ROAS Forecasting
             
             {/* Author Direct Card */}
             <div className="p-6 rounded-2xl bg-gradient-to-br from-slate-50 to-sky-50/50 border border-slate-200 shadow-sm space-y-4">
-              <div className="flex items-center gap-3.5">
-                <div className="w-12 h-12 rounded-xl bg-gradient-to-tr from-sky-600 to-indigo-600 flex items-center justify-center font-extrabold text-white text-lg font-mono shadow-sm shrink-0">
-                  SMS
-                </div>
-                <div>
-                  <h3 className="text-base font-bold text-slate-900">Saul Miron Stark</h3>
-                  <p className="text-xs text-slate-500 font-mono">Creator of The Namastark Model</p>
-                </div>
+              <div className="flex items-center justify-between gap-3 pb-3 border-b border-slate-200/80">
+                <NamastarkLogo size="sm" />
+                <span className="text-[10px] font-mono font-bold text-sky-800 bg-sky-50 px-2 py-0.5 rounded border border-sky-200">
+                  RESEARCH & ADVISORY
+                </span>
+              </div>
+              <div>
+                <h3 className="text-base font-bold text-slate-900">Saul Miron Stark</h3>
+                <p className="text-xs text-slate-500 font-mono">Creator of The Namastark Model</p>
               </div>
 
               <div className="space-y-2.5 pt-2 border-t border-slate-200/80 text-xs text-slate-600 font-mono">

@@ -1,6 +1,7 @@
 import React from 'react';
 import { CurrencyCode } from '../types';
 import { CURRENCIES, PRESET_SCENARIOS } from '../data/constants';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   Calculator, 
   FileText, 
@@ -28,23 +29,12 @@ export const Navbar: React.FC<NavbarProps> = ({
   activePresetId,
 }) => {
   return (
-    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 shadow-sm">
+    <header className="sticky top-0 z-50 backdrop-blur-md bg-white/95 border-b border-slate-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Brand Logo */}
-        <div className="flex items-center space-x-3">
-          <a href="#" className="flex items-center space-x-2 group">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-sky-500 to-indigo-600 flex items-center justify-center font-bold text-white text-sm tracking-wider shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
-              𝒩
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base font-extrabold tracking-wider text-slate-900 flex items-center gap-1.5">
-                NAMASTARK
-                <span className="w-1.5 h-1.5 rounded-full bg-sky-500 animate-pulse"></span>
-              </span>
-              <span className="text-[10px] uppercase font-mono tracking-widest text-slate-500 -mt-1">
-                ROAS Forecaster
-              </span>
-            </div>
+        <div className="flex items-center">
+          <a href="#" className="flex items-center group py-1">
+            <NamastarkLogo size="sm" className="group-hover:opacity-90 transition-opacity" />
           </a>
         </div>
 

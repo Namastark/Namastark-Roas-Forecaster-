@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { WHITEPAPER_REFERENCES } from '../data/constants';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   UserCheck, 
   BookOpen, 
@@ -73,9 +74,9 @@ export const AuthorAndReferences: React.FC = () => {
         {/* Author Bio & IP Attribution Card */}
         <div className="p-8 rounded-2xl bg-white border border-slate-200 mb-12 shadow-sm">
           <div className="flex flex-col md:flex-row gap-8 items-start justify-between">
-            <div className="flex items-start gap-4">
-              <div className="w-16 h-16 rounded-2xl bg-gradient-to-tr from-sky-500 to-indigo-600 flex items-center justify-center font-extrabold text-white text-2xl font-mono shrink-0 shadow-md">
-                SMS
+            <div className="flex flex-col sm:flex-row items-start gap-5">
+              <div className="flex flex-col items-start gap-2 shrink-0 pt-1">
+                <NamastarkLogo size="sm" />
               </div>
               <div className="space-y-1.5">
                 <div className="flex items-center gap-2">

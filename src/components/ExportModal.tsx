@@ -3,6 +3,7 @@ import { ForecasterInputs, ForecasterResults } from '../types';
 import { CURRENCIES, NAMASTARK_CONSTANT } from '../data/constants';
 import { formatCurrency, formatNumber } from '../utils/mathEngine';
 import { MathEquation } from './MathEquation';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   X, 
   Copy, 
@@ -95,13 +96,12 @@ export const ExportModal: React.FC<ExportModalProps> = ({
         
         {/* Header */}
         <div className="flex items-center justify-between pb-4 mb-6 border-b border-slate-200">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center font-bold">
-              𝒩
-            </div>
+          <div className="flex items-center gap-3.5">
+            <NamastarkLogo size="sm" />
+            <div className="h-6 w-px bg-slate-200"></div>
             <div>
-              <h3 className="text-lg font-bold text-slate-900">Executive Forecast Memo</h3>
-              <p className="text-xs text-slate-500 font-mono">The Namastark Model Audit Report</p>
+              <h3 className="text-base font-bold text-slate-900 leading-tight">Executive Forecast Memo</h3>
+              <p className="text-[11px] text-slate-500 font-mono">The Namastark Model Audit Report</p>
             </div>
           </div>
           <button

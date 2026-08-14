@@ -1,5 +1,6 @@
 import React from 'react';
 import { MathEquation } from './MathEquation';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   ShieldAlert, 
   Sparkles, 
@@ -18,7 +19,7 @@ interface HeroSectionProps {
 
 export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
   return (
-    <section className="relative overflow-hidden pt-12 pb-16 md:pt-20 md:pb-24 border-b border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100/50">
+    <section className="relative overflow-hidden pt-8 pb-16 md:pt-14 md:pb-24 border-b border-slate-200 bg-gradient-to-b from-white via-slate-50 to-slate-100/50">
       {/* Background Subtle Gradient Blobs */}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-7xl h-[500px] pointer-events-none opacity-40">
         <div className="absolute top-10 left-1/4 w-96 h-96 bg-sky-100 rounded-full blur-3xl"></div>
@@ -26,17 +27,20 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
       </div>
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Meta Credential Bar */}
-        <div className="flex flex-wrap items-center justify-between gap-3 p-3 rounded-xl bg-white border border-slate-200 mb-8 text-xs font-mono text-slate-600 shadow-sm">
-          <div className="flex items-center gap-2">
-            <span className="inline-flex items-center px-2 py-0.5 rounded bg-sky-50 text-sky-700 font-semibold border border-sky-200">
-              <Award className="w-3 h-3 mr-1" />
+        {/* Brand Banner & Credential Bar */}
+        <div className="flex flex-col lg:flex-row items-center justify-between gap-4 p-4 sm:p-5 rounded-2xl bg-white border border-slate-200 mb-8 shadow-sm">
+          <div className="flex items-center gap-4">
+            <NamastarkLogo size="md" />
+            <div className="hidden sm:block h-7 w-px bg-slate-200"></div>
+            <span className="hidden sm:inline-flex items-center px-2.5 py-1 rounded bg-sky-50 text-sky-800 font-semibold text-xs font-mono border border-sky-200">
+              <Award className="w-3.5 h-3.5 mr-1.5 text-sky-600" />
               PEER-BENCHMARKED FRAMEWORK
             </span>
-            <span className="hidden sm:inline text-slate-300">|</span>
-            <span className="text-slate-700">Author: <strong className="text-slate-900 font-semibold">Saul Miron Stark</strong></span>
           </div>
-          <div className="flex items-center gap-3 text-[11px] text-slate-500">
+
+          <div className="flex flex-wrap items-center justify-center lg:justify-end gap-3 text-xs font-mono text-slate-600">
+            <span>Author: <strong className="text-slate-900 font-semibold">Saul Miron Stark</strong></span>
+            <span className="text-slate-300">|</span>
             <span>📍 Johannesburg, South Africa</span>
             <span className="text-slate-300">|</span>
             <span>📅 Published: April 12, 2025</span>

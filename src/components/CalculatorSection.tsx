@@ -3,6 +3,7 @@ import { ForecasterInputs, ForecasterResults, CurrencyCode } from '../types';
 import { CURRENCIES, NAMASTARK_CONSTANT, PRESET_SCENARIOS } from '../data/constants';
 import { formatCurrency, formatNumber } from '../utils/mathEngine';
 import { MathEquation } from './MathEquation';
+import { NamastarkLogo } from './NamastarkLogo';
 import { 
   Calculator, 
   Sliders, 
@@ -83,9 +84,13 @@ Generated via The Namastark ROAS Forecaster`;
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-sky-50 text-sky-700 text-xs font-mono mb-2 border border-sky-200 font-medium">
-              <Calculator className="w-3.5 h-3.5" />
-              <span>SIMULATION ENGINE</span>
+            <div className="flex items-center gap-3 mb-2">
+              <NamastarkLogo size="xs" />
+              <div className="h-4 w-px bg-slate-300"></div>
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-md bg-sky-50 text-sky-700 text-[11px] font-mono border border-sky-200 font-medium">
+                <Calculator className="w-3 h-3" />
+                <span>SIMULATION ENGINE</span>
+              </div>
             </div>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
               Interactive Forecaster & Audit Engine
