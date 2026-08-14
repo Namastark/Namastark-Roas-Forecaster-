@@ -80,3 +80,41 @@ export interface ReferenceItem {
   description: string;
   category: 'Platform Benchmarks' | 'Auction Dynamics' | 'Macro & Trends' | 'AI & Optimization';
 }
+
+export type TargetMarketRole = 
+  | 'Media Buyer / Performance Specialist'
+  | 'CMO / VP / Marketing Director'
+  | 'Performance Marketing Agency Principal'
+  | 'Growth / E-commerce Lead'
+  | 'Data Analyst / Econometrician'
+  | 'Founder / Managing Director'
+  | 'Academic / Researcher'
+  | 'Other';
+
+export type MonthlySpendTier = 
+  | '< $25,000 / mo'
+  | '$25,000 - $100,000 / mo'
+  | '$100,000 - $500,000 / mo'
+  | '$500,000 - $2,000,000 / mo'
+  | '$2,000,000+ / mo'
+  | 'Academic / Non-Commercial';
+
+export type InquiryObjective = 
+  | 'Historical N Calibration / Brand Data Audit'
+  | 'Executive / Board Deck ROAS Defense Advisory'
+  | 'Agency Planning Framework Integration'
+  | 'Media Buying Team Training & Keynote'
+  | 'Academic / Research Citation & Methodology'
+  | 'General Paid Media Advisory';
+
+export interface ContactFormData {
+  fullName: string;
+  email: string;
+  company: string;
+  role: TargetMarketRole;
+  monthlySpendTier: MonthlySpendTier;
+  primaryChannels: string[];
+  inquiryObjective: InquiryObjective;
+  includeSimulationContext: boolean;
+  message: string;
+}

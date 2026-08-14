@@ -39,7 +39,7 @@ export const ExportModal: React.FC<ExportModalProps> = ({
 
   const getMarkdownReport = () => {
     return `# THE NAMASTARK ROAS FORECAST EXECUTIVE MEMO
-**Author Framework:** Saul Miron Stark (Johannesburg, South Africa - ID: 9103115051081)
+**Author Framework:** Saul Miron Stark (Johannesburg, South Africa)
 **Date:** ${new Date().toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
 **Currency:** ${inputs.currency} (${currencySymbol})
 

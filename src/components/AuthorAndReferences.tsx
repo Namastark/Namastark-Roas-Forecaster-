@@ -11,7 +11,8 @@ import {
   FileCode2, 
   Filter,
   Award,
-  ShieldCheck
+  ShieldCheck,
+  Mail
 } from 'lucide-react';
 
 export const AuthorAndReferences: React.FC = () => {
@@ -28,7 +29,7 @@ export const AuthorAndReferences: React.FC = () => {
   const getCitationText = () => {
     switch (citationFormat) {
       case 'APA':
-        return `Stark, S. M. (2025). The Namastark Model: A New Standard for Smarter ROAS Forecasting. Marketing Science & Predictive Analytics. Johannesburg, South Africa. ID: 9103115051081.`;
+        return `Stark, S. M. (2025). The Namastark Model: A New Standard for Smarter ROAS Forecasting. Marketing Science & Predictive Analytics. Johannesburg, South Africa.`;
       case 'BibTeX':
         return `@article{stark2025namastark,
   author    = {Saul Miron Stark},
@@ -36,11 +37,10 @@ export const AuthorAndReferences: React.FC = () => {
   journal   = {Paid Media Analytics \& Marketing Science},
   address   = {Johannesburg, South Africa},
   year      = {2025},
-  month     = {April},
-  note      = {Author ID: 9103115051081}
+  month     = {April}
 }`;
       case 'Harvard':
-        return `Stark, S.M., 2025. The Namastark Model: A New Standard for Smarter ROAS Forecasting. Johannesburg: Marketing Science. [ID: 9103115051081].`;
+        return `Stark, S.M., 2025. The Namastark Model: A New Standard for Smarter ROAS Forecasting. Johannesburg: Marketing Science.`;
       case 'MLA':
         return `Stark, Saul Miron. "The Namastark Model: A New Standard for Smarter ROAS Forecasting." Marketing Science (2025), Johannesburg, South Africa.`;
     }
@@ -95,12 +95,21 @@ export const AuthorAndReferences: React.FC = () => {
                   </span>
                   <span className="flex items-center gap-1 text-slate-800">
                     <ShieldCheck className="w-3 h-3 text-emerald-600" />
-                    ID Reference: <strong className="font-mono text-slate-900">9103115051081</strong>
+                    Peer-Benchmarked Attribution
                   </span>
                 </div>
                 <p className="text-xs text-slate-600 leading-relaxed pt-2 max-w-2xl">
                   Performance marketing scientist, strategist, and creator of the Namastark Model. Focused on quantifying advertising auction uncertainty, eradicating theoretical optimism bias, and introducing mathematically grounded forecasting standards for performance teams and enterprise media buyers globally.
                 </p>
+                <div className="pt-2">
+                  <a
+                    href="#contact-advisory"
+                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-sky-50 border border-sky-200 text-sky-800 text-xs font-semibold hover:bg-sky-100 hover:text-sky-900 transition-colors shadow-xs"
+                  >
+                    <Mail className="w-3.5 h-3.5 text-sky-600" />
+                    <span>Get in Touch for Historical 𝒩 Audits & Advisory</span>
+                  </a>
+                </div>
               </div>
             </div>
 

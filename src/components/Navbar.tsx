@@ -8,7 +8,8 @@ import {
   UserCheck, 
   Download, 
   Sparkles,
-  Share2
+  Share2,
+  Mail
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -16,6 +17,7 @@ interface NavbarProps {
   onCurrencyChange: (currency: CurrencyCode) => void;
   onSelectPreset: (presetId: string) => void;
   onExportReport: () => void;
+  activePresetId?: string | null;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -23,6 +25,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onCurrencyChange,
   onSelectPreset,
   onExportReport,
+  activePresetId,
 }) => {
   return (
     <header className="sticky top-0 z-50 backdrop-blur-md bg-white/90 border-b border-slate-200 shadow-sm">
@@ -73,7 +76,14 @@ export const Navbar: React.FC<NavbarProps> = ({
             className="text-slate-600 hover:text-sky-600 transition-colors flex items-center gap-1.5"
           >
             <UserCheck className="w-3.5 h-3.5 text-emerald-600" />
-            Research & References
+            Research
+          </a>
+          <a
+            href="#contact-advisory"
+            className="text-slate-600 hover:text-sky-600 transition-colors flex items-center gap-1.5 font-semibold"
+          >
+            <Mail className="w-3.5 h-3.5 text-sky-600" />
+            Contact & Advisory
           </a>
         </nav>
 
@@ -111,23 +121,35 @@ export const Navbar: React.FC<NavbarProps> = ({
               <div className="text-[10px] uppercase font-mono text-slate-400 px-2 py-1 border-b border-slate-100">
                 Load Empirical Scenario
               </div>
-              {PRESET_SCENARIOS.map((preset) => (
-                <button
-                  key={preset.id}
-                  onClick={() => onSelectPreset(preset.id)}
-                  className="w-full text-left p-2 rounded-lg hover:bg-slate-50 transition-colors flex flex-col group/item"
-                >
-                  <span className="text-xs font-semibold text-slate-900 group-hover/item:text-sky-600 flex items-center justify-between">
-                    {preset.name}
-                    <span className="text-[9px] px-1.5 py-0.5 rounded bg-slate-100 text-slate-600 font-mono border border-slate-200">
-                      {preset.tag}
+              {PRESET_SCENARIOS.map((preset) => {
+                const isSelected = activePresetId === preset.id;
+                return (
+                  <button
+                    key={preset.id}
+                    onClick={() => onSelectPreset(preset.id)}
+                    className={`w-full text-left p-2 rounded-lg transition-colors flex flex-col ${
+                      isSelected
+                        ? 'bg-sky-50 border border-sky-200 text-sky-950 font-medium'
+                        : 'hover:bg-slate-50 text-slate-700'
+                    }`}
+                  >
+                    <span className="text-xs font-semibold flex items-center justify-between">
+                      <span className="flex items-center gap-1.5">
+                        {isSelected && <span className="w-1.5 h-1.5 rounded-full bg-sky-600"></span>}
+                        {preset.name}
+                      </span>
+                      <span className={`text-[9px] px-1.5 py-0.5 rounded font-mono ${
+                        isSelected ? 'bg-sky-200/80 text-sky-800 font-bold' : 'bg-slate-100 text-slate-600 border border-slate-200'
+                      }`}>
+                        {preset.tag}
+                      </span>
                     </span>
-                  </span>
-                  <span className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
-                    {preset.description}
-                  </span>
-                </button>
-              ))}
+                    <span className="text-[11px] text-slate-500 line-clamp-1 mt-0.5">
+                      {preset.description}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
 

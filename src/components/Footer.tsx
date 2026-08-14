@@ -49,6 +49,12 @@ export const Footer: React.FC = () => {
             >
               Citations
             </a>
+            <a
+              href="#contact-advisory"
+              className="text-sky-700 hover:text-sky-900 font-semibold transition-colors"
+            >
+              Contact / Advisory
+            </a>
             <button
               onClick={scrollToTop}
               className="p-2 rounded-lg bg-slate-50 border border-slate-200 hover:border-sky-300 text-slate-700 hover:text-slate-900 transition-all ml-2 shadow-xs"
@@ -61,7 +67,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-6 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px]">
           <p>
-            © {new Date().getFullYear()} Saul Miron Stark. All Rights Reserved. (ID: 9103115051081, Johannesburg, South Africa).
+            © {new Date().getFullYear()} Saul Miron Stark. All Rights Reserved. (Johannesburg, South Africa).
           </p>
           <div className="flex items-center gap-2">
             <span className="inline-block w-2 h-2 rounded-full bg-emerald-500"></span>

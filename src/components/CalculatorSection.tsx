@@ -26,6 +26,7 @@ import {
 interface CalculatorSectionProps {
   inputs: ForecasterInputs;
   results: ForecasterResults;
+  activePresetId?: string | null;
   onInputChange: (field: keyof ForecasterInputs, value: any) => void;
   onApplyPreset: (presetId: string) => void;
   onResetToDefaults: () => void;
@@ -34,6 +35,7 @@ interface CalculatorSectionProps {
 export const CalculatorSection: React.FC<CalculatorSectionProps> = ({
   inputs,
   results,
+  activePresetId,
   onInputChange,
   onApplyPreset,
   onResetToDefaults,
@@ -119,25 +121,72 @@ Generated via The Namastark ROAS Forecaster`;
           </div>
         </div>
 
-        {/* Preset Selector Pills */}
-        <div className="flex flex-wrap items-center gap-2 p-3 rounded-xl bg-white border border-slate-200 mb-8 shadow-sm">
-          <span className="text-xs font-mono text-slate-600 flex items-center gap-1 mr-2 font-medium">
-            <Zap className="w-3.5 h-3.5 text-sky-600" />
-            Presets:
-          </span>
-          {PRESET_SCENARIOS.map((preset) => (
-            <button
-              key={preset.id}
-              id={`preset-btn-${preset.id}`}
-              onClick={() => onApplyPreset(preset.id)}
-              className="px-3 py-1 rounded-lg bg-slate-50 hover:bg-sky-50 border border-slate-200 text-xs font-medium text-slate-700 hover:border-sky-300 hover:text-sky-800 transition-all flex items-center gap-1.5"
-            >
-              <span>{preset.name}</span>
-              <span className="text-[9px] px-1.5 py-0.2 rounded bg-white text-sky-700 font-mono border border-slate-200">
-                {preset.tag}
+        {/* Preset Selector Cards */}
+        <div className="p-4 rounded-2xl bg-white border border-slate-200 mb-8 shadow-sm">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-3 mb-3 border-b border-slate-100">
+            <div className="flex items-center gap-2">
+              <div className="w-6 h-6 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center">
+                <Zap className="w-3.5 h-3.5 text-sky-600 fill-sky-600/30" />
+              </div>
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-900">
+                Preset Calibration Scenarios
               </span>
-            </button>
-          ))}
+            </div>
+            <span className="text-[11px] font-mono text-slate-500">
+              Active Multiplier: <strong className="text-slate-900 font-semibold">{inputs.mode === 'constant' ? `𝒩₀ = ${NAMASTARK_CONSTANT}` : `𝒩 = ${inputs.customCoefficient}`}</strong>
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2.5">
+            {PRESET_SCENARIOS.map((preset) => {
+              const isSelected = activePresetId === preset.id || (
+                inputs.adSpend === preset.inputs.adSpend &&
+                inputs.cpc === preset.inputs.cpc &&
+                inputs.leadConversionRate === preset.inputs.leadConversionRate &&
+                inputs.closeRate === preset.inputs.closeRate &&
+                inputs.revenuePerClient === preset.inputs.revenuePerClient &&
+                inputs.currency === preset.inputs.currency
+              );
+
+              return (
+                <button
+                  key={preset.id}
+                  id={`preset-btn-${preset.id}`}
+                  onClick={() => onApplyPreset(preset.id)}
+                  className={`text-left p-3 rounded-xl transition-all relative flex flex-col justify-between border ${
+                    isSelected
+                      ? 'bg-slate-900 text-white border-sky-500 shadow-md ring-2 ring-sky-500/40 -translate-y-0.5'
+                      : 'bg-slate-50 hover:bg-sky-50/70 border-slate-200 hover:border-sky-300 text-slate-800'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className={`text-[10px] px-2 py-0.5 rounded font-mono font-bold border transition-colors ${
+                      isSelected
+                        ? 'bg-sky-500 text-white border-sky-400 shadow-xs'
+                        : 'bg-white text-sky-700 border-slate-200'
+                    }`}>
+                      {preset.tag}
+                    </span>
+                    {isSelected && (
+                      <span className="flex items-center gap-1 text-[10px] font-mono font-bold text-sky-400">
+                        <span className="w-1.5 h-1.5 rounded-full bg-sky-400 animate-pulse"></span>
+                        SELECTED
+                      </span>
+                    )}
+                  </div>
+
+                  <div className="space-y-1">
+                    <h4 className={`text-xs font-bold leading-tight ${isSelected ? 'text-white' : 'text-slate-900'}`}>
+                      {preset.name}
+                    </h4>
+                    <p className={`text-[11px] leading-snug line-clamp-2 ${isSelected ? 'text-slate-300' : 'text-slate-500'}`}>
+                      {preset.description}
+                    </p>
+                  </div>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Main Grid: Inputs (Left) vs Real-Time Results (Right) */}

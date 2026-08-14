@@ -8,6 +8,7 @@ import { CalculatorSection } from './components/CalculatorSection';
 import { ExecutiveSummary } from './components/ExecutiveSummary';
 import { DeepMethodology } from './components/DeepMethodology';
 import { AuthorAndReferences } from './components/AuthorAndReferences';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { ExportModal } from './components/ExportModal';
 
@@ -25,6 +26,7 @@ export default function App() {
     currency: 'ZAR',
   });
 
+  const [activePresetId, setActivePresetId] = useState<string | null>('whitepaper-canonical');
   const [isExportOpen, setIsExportOpen] = useState(false);
 
   // Compute live results
@@ -33,6 +35,7 @@ export default function App() {
   }, [inputs]);
 
   const handleInputChange = (field: keyof ForecasterInputs, value: any) => {
+    setActivePresetId(null);
     setInputs((prev) => ({
       ...prev,
       [field]: value,
@@ -40,6 +43,7 @@ export default function App() {
   };
 
   const handleCurrencyChange = (currency: CurrencyCode) => {
+    setActivePresetId(null);
     const config = CURRENCIES[currency];
     setInputs((prev) => {
       // If switching currencies and still at default ratios, scale values appropriately
@@ -70,6 +74,7 @@ export default function App() {
   const handleApplyPreset = (presetId: string) => {
     const preset = PRESET_SCENARIOS.find((p) => p.id === presetId);
     if (preset) {
+      setActivePresetId(presetId);
       setInputs({
         ...preset.inputs,
       });
@@ -77,6 +82,7 @@ export default function App() {
   };
 
   const handleResetToDefaults = () => {
+    setActivePresetId('whitepaper-canonical');
     setInputs({
       adSpend: 4000,
       cpc: 60,
@@ -104,6 +110,7 @@ export default function App() {
         onCurrencyChange={handleCurrencyChange}
         onSelectPreset={handleApplyPreset}
         onExportReport={() => setIsExportOpen(true)}
+        activePresetId={activePresetId}
       />
 
       {/* 1. Header & Hero Section */}
@@ -114,6 +121,7 @@ export default function App() {
         <CalculatorSection
           inputs={inputs}
           results={results}
+          activePresetId={activePresetId}
           onInputChange={handleInputChange}
           onApplyPreset={handleApplyPreset}
           onResetToDefaults={handleResetToDefaults}
@@ -127,6 +135,9 @@ export default function App() {
 
         {/* 5. Author, IP Credit & Citations */}
         <AuthorAndReferences />
+
+        {/* 6. Direct Contact & Advisory Consultation Form */}
+        <ContactSection inputs={inputs} results={results} />
       </main>
 
       {/* Footer */}

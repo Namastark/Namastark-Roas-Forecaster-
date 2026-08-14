@@ -8,7 +8,8 @@ import {
   Activity, 
   ArrowRight,
   Database,
-  Award
+  Award,
+  Mail
 } from 'lucide-react';
 
 interface HeroSectionProps {
@@ -34,7 +35,6 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
             </span>
             <span className="hidden sm:inline text-slate-300">|</span>
             <span className="text-slate-700">Author: <strong className="text-slate-900 font-semibold">Saul Miron Stark</strong></span>
-            <span className="hidden md:inline text-slate-500">(ID: 9103115051081)</span>
           </div>
           <div className="flex items-center gap-3 text-[11px] text-slate-500">
             <span>📍 Johannesburg, South Africa</span>
@@ -81,7 +81,14 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onScrollToTool }) => {
               className="px-6 py-3.5 rounded-xl bg-white border border-slate-200 text-slate-800 font-semibold text-sm hover:border-sky-500 hover:text-sky-700 transition-all flex items-center gap-2 shadow-sm hover:bg-slate-50"
             >
               <Database className="w-4 h-4 text-sky-600" />
-              <span>Explore Mathematical Derivation</span>
+              <span>Mathematical Proof</span>
+            </a>
+            <a
+              href="#contact-advisory"
+              className="px-5 py-3.5 rounded-xl bg-sky-50 border border-sky-200 text-sky-800 font-semibold text-sm hover:bg-sky-100 hover:text-sky-900 transition-all flex items-center gap-2"
+            >
+              <Mail className="w-4 h-4 text-sky-600" />
+              <span>Consult Author</span>
             </a>
           </div>
         </div>
